@@ -15,7 +15,7 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 @ToString
-
+@Table(name = "user")
 public class User {
 
     @Id
@@ -33,7 +33,8 @@ public class User {
             )})
     public List<Role> roles = new ArrayList<>();
 
-    @OneToMany (mappedBy="user") // mappedBy indicates the owning side, establishes bidirectional association
+    @OneToMany (mappedBy="userId") // mappedBy indicates the owning side, establishes bidirectional association
+    // so don't need annotation in Task table
     public Set<Task> tasks = new HashSet<>();
 
 

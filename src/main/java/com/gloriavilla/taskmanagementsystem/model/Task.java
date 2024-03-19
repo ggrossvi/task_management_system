@@ -21,9 +21,9 @@ public class Task {
     String name;
     String description;
     Date date;
-    @ManyToOne()
-    @JoinColumn(name="user_id", nullable=false)  // @JoinColumn indicates the mapping on the owning side
-    User user;
+//    @ManyToOne()
+//    @JoinColumn(name="user_id", nullable=false)  // @JoinColumn indicates the mapping on the owning side
+    Long userId ; //name of column in user model
 
     public enum Priority {
         URGENT_IMPORTANT,
