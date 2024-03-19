@@ -6,7 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @Entity
 @Setter
 @Getter
@@ -29,6 +32,11 @@ public class User {
             inverseJoinColumns = {@JoinColumn(name = "role_id ", referencedColumnName = "id"
             )})
     public List<Role> roles = new ArrayList<>();
+
+    @OneToMany (mappedBy="user") // mappedBy indicates the owning side, establishes bidirectional association
+    public Set<Task> tasks = new HashSet<>();
+
+
 
     public User(Long id, String name, String email, String password, List<Role> roles) {
         this.id = id;
