@@ -33,19 +33,20 @@
                     <h2 class="text-center">Task Form</h2>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form
 
-                        <!--                        method="post"-->
-                        <!--                        role="form"-->
-                        <!--                        th:action="@{/register/save}"-->
-                        <!--                        th:object="${user}"-->
-
+                                                method="post"
+                                                role="form"
+                                                th:action="@{/task/save}"
+                                                th:object="${task}"
+                    >
                         <div class="form-group mb-3">
                             <label class="form-label">Task Name</label>
+                            <!-- The names of the input field should match dto attribute -->
                             <input
                                     class="form-control"
-                                    id="taskName"
-                                    name="taskName"
+                                    id="name"
+                                    name="name"
                                     placeholder="Enter task name"
                                     type="text"
                             />

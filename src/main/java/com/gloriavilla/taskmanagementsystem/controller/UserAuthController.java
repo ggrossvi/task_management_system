@@ -1,8 +1,10 @@
 package com.gloriavilla.taskmanagementsystem.controller;
 import java.util.List;
 
+import com.gloriavilla.taskmanagementsystem.dto.TaskDto;
 import com.gloriavilla.taskmanagementsystem.dto.UserDto;
 import com.gloriavilla.taskmanagementsystem.model.User;
+import com.gloriavilla.taskmanagementsystem.service.TaskService;
 import com.gloriavilla.taskmanagementsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,8 @@ import jakarta.validation.Valid;
 @Controller
 public class UserAuthController {
     private UserService userService;
+    @Autowired
+    private TaskService taskService;
 
     @Autowired
     public UserAuthController(UserService userService)    {
@@ -64,6 +68,13 @@ public class UserAuthController {
         userService.saveUser(userDto);
         return "redirect:/register?success";
 
+    }
+
+    @PostMapping("/task/save")
+    public String saveTask(@ModelAttribute("task") TaskDto taskDto,  UserDto userDto,BindingResult result,
+                           Model model){
+        taskService.saveTask(taskDto);
+        return "redirect:/register?success";
     }
 
     // handler method is used to handle a list of students

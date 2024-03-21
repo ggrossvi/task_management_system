@@ -35,7 +35,7 @@ public class User {
 
     @OneToMany (mappedBy="userId") // mappedBy indicates the owning side, establishes bidirectional association
     // so don't need annotation in Task table
-    public Set<Task> tasks = new HashSet<>();
+    public List<Task> tasks = new ArrayList<Task>();
 
 
 

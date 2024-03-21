@@ -24,6 +24,7 @@ public class SpringSecurity {
                 .authorizeHttpRequests((authz) -> authz
                                 .requestMatchers("/register/**").permitAll()
                                 .requestMatchers("/index").permitAll()
+                                .requestMatchers("/task/**").permitAll()
                                 .requestMatchers("/users").hasRole("ADMIN")
                         // .and()
                 )
