@@ -21,10 +21,10 @@ public class Goal {
     String name;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable (name ="goals_tasks",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "role_id ", referencedColumnName = "id"
+            joinColumns = {@JoinColumn(name = "goal_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "task_id ", referencedColumnName = "id"
             )})
-    public List<Role> roles = new ArrayList<>();
+    public List<Task> tasks = new ArrayList<>();
 
 
 }
