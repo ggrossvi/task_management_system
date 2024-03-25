@@ -17,14 +17,17 @@ import java.util.List;
 public class Goal {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long id;
+    Long goalId;
     String name;
+    /*
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable (name ="goals_tasks",
             joinColumns = {@JoinColumn(name = "goal_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "task_id ", referencedColumnName = "id"
             )})
     public List<Task> tasks = new ArrayList<>();
+
+     */
 
 
 }

@@ -73,8 +73,13 @@ public class UserAuthController {
     @PostMapping("/task/save")
     public String saveTask(@ModelAttribute("task") TaskDto taskDto,  UserDto userDto,BindingResult result,
                            Model model){
+        if (result.hasErrors()) {
+            model.addAttribute("task", taskDto);
+
+            return "/register";
+        }
         taskService.saveTask(taskDto);
-        return "redirect:/register?success";
+        return "redirect:/users?success";
     }
 
     // handler method is used to handle a list of students
