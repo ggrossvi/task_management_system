@@ -76,7 +76,7 @@ public class UserAuthController {
         if (result.hasErrors()) {
             model.addAttribute("task", taskDto);
 
-            return "/register";
+            return "/users";
         }
         taskService.saveTask(taskDto);
         return "redirect:/users?success";
