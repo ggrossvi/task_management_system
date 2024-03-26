@@ -21,15 +21,16 @@ public class Task {
     String name;
     String description;
     Date date;
-    @ManyToOne()
-    @JoinColumn(name="user_id", nullable=false)  // @JoinColumn indicates the mapping on the owning side
-    User user;
+//   @ManyToOne
+//   @JoinColumn(name="user_id", nullable=false)  // @JoinColumn indicates the mapping on the owning side
+       //User user;
+       Long userId; //name of column in user model
 
     public enum Priority {
         URGENT_IMPORTANT,
         NOT_URGENT_IMPORTANT,
         URGENT_NOT_IMPORTANT,
-        NOT_URGENT_NOT_IMPORTANT;
+        NOT_URGENT_NOT_IMPORTANT
     }
 
 
