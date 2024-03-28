@@ -3,6 +3,7 @@ import java.util.List;
 
 import com.gloriavilla.taskmanagementsystem.dto.TaskDto;
 import com.gloriavilla.taskmanagementsystem.dto.UserDto;
+import com.gloriavilla.taskmanagementsystem.model.Task;
 import com.gloriavilla.taskmanagementsystem.model.User;
 import com.gloriavilla.taskmanagementsystem.service.TaskService;
 import com.gloriavilla.taskmanagementsystem.service.UserService;
@@ -66,6 +67,7 @@ public class UserAuthController {
         }
 
         userService.saveUser(userDto);
+
         return "redirect:/register?success";
 
     }
@@ -80,6 +82,13 @@ public class UserAuthController {
         }
         taskService.saveTask(taskDto);
         return "redirect:/users?success";
+    }
+
+    @GetMapping("/task/list")
+    public String tasks(Model model) {
+        List<Task> allTasks = taskService.findAllByUserId(1L);
+        model.addAttribute("allTasks", allTasks);
+        return "allTasks";
     }
 
     // handler method is used to handle a list of students

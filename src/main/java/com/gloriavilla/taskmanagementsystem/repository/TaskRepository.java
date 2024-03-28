@@ -8,5 +8,9 @@ import java.util.Optional;
 public interface TaskRepository  extends JpaRepository <Task, Long>{
     Optional<Task> findById(Long id);
 
-
+    // using JPA query naming convention
+    List<Task> findAllByUserId(Long userId);
 }
+
+
+//Controller -> Service(I) => ServiceImpl => Ropository(I) => RepositoryImpl

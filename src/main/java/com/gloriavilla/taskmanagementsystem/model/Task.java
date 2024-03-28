@@ -24,7 +24,7 @@ public class Task {
 //   @ManyToOne
 //   @JoinColumn(name="user_id", nullable=false)  // @JoinColumn indicates the mapping on the owning side
        //User user;
-       Long userId; //name of column in user model
+    Long userId; //name of column in user model
 
     public enum Priority {
         URGENT_IMPORTANT,

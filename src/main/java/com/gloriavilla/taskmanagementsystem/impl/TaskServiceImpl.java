@@ -8,7 +8,9 @@ import com.gloriavilla.taskmanagementsystem.service.TaskService;
 import com.gloriavilla.taskmanagementsystem.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.AbstractList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TaskServiceImpl implements TaskService {
@@ -36,4 +38,17 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> findTaskById(Long id) {
         return null;
     }
+
+    @Override
+    public List<Task> findAllByUserId(Long userId) {
+        return taskRepository.findAllByUserId(userId);
+    }
+
+    /*
+    @Override
+    public Optional<Task> findAllTasksByUserId(Long userId) {
+        List<Task> allTasks = new <Task>();
+    }
+
+     */
 }
