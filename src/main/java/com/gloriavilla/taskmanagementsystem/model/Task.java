@@ -1,4 +1,5 @@
 package com.gloriavilla.taskmanagementsystem.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,8 @@ public class Task {
     @Column(nullable=false)
     String name;
     String description;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @Column(name = "date")
     Date date;
 //   @ManyToOne
 //   @JoinColumn(name="user_id", nullable=false)  // @JoinColumn indicates the mapping on the owning side

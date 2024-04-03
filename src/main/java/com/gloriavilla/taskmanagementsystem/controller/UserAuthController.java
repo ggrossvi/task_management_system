@@ -81,6 +81,9 @@ public class UserAuthController {
             return "/users";
         }
         taskService.saveTask(taskDto);
+
+        List<Task> allTasks = taskService.findAllByUserId(1L);
+        model.addAttribute("allTasks", allTasks);
         return "redirect:/users?success";
     }
 
@@ -88,7 +91,8 @@ public class UserAuthController {
     public String tasks(Model model) {
         List<Task> allTasks = taskService.findAllByUserId(1L);
         model.addAttribute("allTasks", allTasks);
-        return "allTasks";
+        // return indicates what page will be returned
+        return "/allTasks";
     }
 
     // handler method is used to handle a list of students

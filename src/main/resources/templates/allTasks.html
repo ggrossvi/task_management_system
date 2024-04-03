@@ -120,14 +120,15 @@
                 </div>
                 <div th:if="${param.success}">
                     <div class="alert alert-info">
-                        Current tasks:  Show Tasks!
+
                         <table>
                             <tr th:each="showTasks: ${allTasks}">
                                 <td th:text="${showTasks}"></td>
                             </tr>
                         </table>
+                        Current tasks:  Show Tasks!
                         <ul>
-                            <li th:each="tasks: ${allTasks}"> </li>>
+                            <li th:each="tasks : ${allTasks}"> </li>>
                         </ul>>
                     </div>
                 </div>
