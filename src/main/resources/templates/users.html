@@ -37,7 +37,20 @@
                 <div th:if="${success}">
                     <div class="alert alert-info">
                         You have successfully entered your task!
+                        <form
+
+                                method="post"
+                                role="form"
+                                th:action="@{/task/list}"
+                                th:object="${task}"
+                        >
+
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Show Tasks</button>
+                            </div>
+                        </form>
                     </div>
+
                 </div>
 
                 <div th:if="${failure}">
@@ -132,6 +145,7 @@
                     <div class="alert alert-info">
                         Current tasks:  Show Tasks!
 
+
                         <table>
                             <thead>
                             <tr>
@@ -163,6 +177,8 @@
                                     >-->
 
                                <td>
+
+
                                    <form
 
                                         method="post"
