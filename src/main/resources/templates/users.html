@@ -39,6 +39,13 @@
                         You have successfully entered your task!
                     </div>
                 </div>
+
+                <div th:if="${failure}">
+                    <div class="alert alert-info">
+                        You have successfully entered your task!
+                    </div>
+                </div>
+
                 <div class="card-body">
                     <form
 
@@ -134,6 +141,44 @@
                             <tbody>
                             <tr th:each = "task : ${allTasks}">
                                 <td th:text = "${task.name}"></td>
+<!--                                <td th:text = "${task.description}"></td>-->
+<!--                                <td th:text = "${task.priority}"></td>-->
+<!--                                <td th:text = "${task.deadline}"></td>-->
+<!--                                <td th:text = "${task.isComplete}"></td>-->
+<!--                                <td th:text = "${task.id}"></td>-->
+<!--                                <td th:text = "${task.user}"></td>-->
+<!--                                <td th:text = "${task.createdAt}"></td>-->
+<!--                                <td th:text = "${task.updatedAt}"></td>-->
+<!--                                <td th:text = "${task.deletedAt}"></td>-->
+<!--                                <td th:text = "${task.deleted}"></td>-->
+<!--                                <form-
+
+<!--                                        method="post"-->
+<!--                                        role="form"-->
+<!--                                        th:action="@{/task/delete}"-->
+<!--                                        th:object="${task}"></form>-->
+<!--                                <div class="form-group  mb-3">-->
+<!--                                    <button class="btn btn-primary" type="submit">Delete</button>-->
+<!--                                </div>
+                                    >-->
+
+                               <td>
+                                   <form
+
+                                        method="post"
+                                        role="form"
+                                        th:action="@{/task/edit}"
+                                        th:object="${task}"
+                                    >
+                                        <div class="form-group">
+                                            <button class="btn btn-primary" type="submit">Edit</button>
+                                        </div>
+                                    </form>
+                               </td>
+                                <td>
+
+                                </td>
+
                             </tr>
                             </tbody>
 <!--                            <tr th:each="task: ${allTasks}">-->

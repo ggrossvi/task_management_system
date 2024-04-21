@@ -108,4 +108,24 @@ public class UserAuthController {
         return "users";
 
     }
+
+    /*@PostMapping("/task/edit")
+    public String editTask(@ModelAttribute("task") TaskDto taskDto,  UserDto userDto,BindingResult result,
+                           Model model) {
+        if (result.hasErrors()) {
+            model.addAttribute("task", taskDto);
+
+            return "/users";
+        }
+        taskService.editTask(taskDto);
+
+        List<Task> allTasks = taskService.findAllByUserId(1L);
+
+        model.addAttribute("allTasks", allTasks);
+        model.addAttribute("success", "success");
+        //return "redirect:/users?success";
+        return "/users";
+        //command shift /
+    }*/
+
 }
