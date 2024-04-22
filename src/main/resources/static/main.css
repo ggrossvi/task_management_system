@@ -14,3 +14,8 @@
 /*    background-color: #4CAF50;*/
 /*    margin: 10px;*/
 /*}*/
+
+/* The "cursor: move" allow the drag and drop functionality*/
+.task-row {
+    cursor: move;
+}

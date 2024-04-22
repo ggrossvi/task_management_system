@@ -153,7 +153,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each = "task : ${allTasks}" >
+                                <tr th:each = "task : ${allTasks}" draggable="true" class="task-row">
                                     <td th:text = "${task.name}"></td>
     <!--                                <td th:text = "${task.description}"></td>-->
     <!--                                <td th:text = "${task.priority}"></td>-->
