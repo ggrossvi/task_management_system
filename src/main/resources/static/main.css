@@ -1,0 +1,16 @@
+.table-list {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction:row;
+    padding: 20px;
+    background-color: aqua;
+}
+
+/*button {*/
+/*    vertical-align: bottom;*/
+/*    background-color: #4CAF50;*/
+/*    margin: 10px;*/
+/*}*/

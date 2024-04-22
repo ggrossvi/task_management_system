@@ -1,6 +1,4 @@
 package com.gloriavilla.taskmanagementsystem.controller;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import com.gloriavilla.taskmanagementsystem.dto.TaskDto;
@@ -80,7 +78,7 @@ public class UserAuthController {
         if (result.hasErrors()) {
             model.addAttribute("task", taskDto);
 
-            return "/users";
+            return "task";
         }
         taskService.saveTask(taskDto);
 
@@ -89,7 +87,7 @@ public class UserAuthController {
         model.addAttribute("allTasks", allTasks);
         model.addAttribute("success","success");
         //return "redirect:/users?success";
-        return "/users";
+        return "task";
     }
 
     @GetMapping("/task/list")
@@ -105,7 +103,7 @@ public class UserAuthController {
     public String users(Model model) {
         List<UserDto> users = userService.findAllUsers();
         model.addAttribute("users", users);
-        return "users";
+        return "task";
 
     }
 
