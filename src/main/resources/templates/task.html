@@ -53,6 +53,25 @@
 
                 </div>
 
+                <div th:if="${edit}">
+                    <div class="alert alert-info">
+                        Edit your task!
+                        <form
+
+                                method="post"
+                                role="form"
+                                th:action="@{/task/list}"
+                                th:object="${task}"
+                        >
+
+                            <div class="form-group">
+                                <button class="btn btn-primary" type="submit">Update Task</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
                 <div th:if="${failure}">
                     <div class="alert alert-info">
                         You have successfully entered your task!

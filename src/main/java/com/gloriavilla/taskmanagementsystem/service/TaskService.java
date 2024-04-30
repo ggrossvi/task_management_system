@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface TaskService {
     public void saveTask(TaskDto taskDto);
-    public List<Task> findTaskById(Long id);
+    //public List<Task> findTaskById(Long id);
     List<Task> findAllByUserId(Long userId);
+    Task findTaskById(Long id);
+    void updateTask(Task currentTask, Task dto);
 }

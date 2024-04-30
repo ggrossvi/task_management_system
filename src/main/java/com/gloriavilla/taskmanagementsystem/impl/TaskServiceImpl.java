@@ -32,10 +32,7 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.save(task);
     }
 
-    @Override
-    public List<Task> findTaskById(Long id) {
-        return null;
-    }
+
 
     @Override
     public List<Task> findAllByUserId(Long userId) {
@@ -52,11 +49,19 @@ public class TaskServiceImpl implements TaskService {
         return allTasks;
     }
 
-    /*
-    @Override
-    public Optional<Task> findAllTasksByUserId(Long userId) {
-        List<Task> allTasks = new <Task>();
+    public Task findTaskById(Long id) {
+        Optional<Task> task = taskRepository.findById(id);
+        if (task.isPresent()) {
+            return task.get();
+        }
+        return null;
     }
 
-     */
+    public void updateTask(Task currentTask, Task dto) {
+        //currentTask.setDescription(dto.getDescription());
+        currentTask.setName(dto.getName());
+        taskRepository.save(currentTask);
+        //taskRepository.deleteById(id);
+    }
+
 }
