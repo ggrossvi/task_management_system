@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gloria's Task Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  rel="stylesheet"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"   crossorigin="anonymous">
+    <link th:href="@{/static/main.css}" rel="stylesheet" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" th:href="@{/index}">Task Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" aria-current="page" th:href="@{/task}">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" th:href="@{/logout}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br /><br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Task Form</h2>
+                    </div>
+                    <div th:if="${success}">
+                        <div class="alert alert-info">
+                            Update your Task
+                            <p th:text="${task.name}"></p>
+                        </div>
+                    </div>
+                    <div th:if="${edit}">
+                        <div class="alert alert-info">
+                            Edit your task!
+                            <form
+
+                                    method="post"
+                                    role="form"
+                                    th:action="@{/task/route}"
+                                    th:object="${task}"
+                            >
+
+                                <input type ="hidden"  th:field="*{id}">
+                                <input type ="hidden"  th:field="*{name}">
+                                <div class="form-group">
+
+                                    <button class="btn btn-primary" type="submit">Edit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div th:if="${failure}">
+                        <div class="alert alert-info">
+                            You have successfully entered your task!
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form
+
+                                method="post"
+                                role="form"
+                                th:action="@{/task/save}"
+                                th:object="${task}"
+                        >
+
+                            <input type ="hidden"  th:field="*{id}">
+                            <input type ="hidden"  th:field="*{name}">
+                            <div class="form-group mb-3"
+                                 th:if="${task.name != null}"
+                            >
+
+                                <!-- The names of the input field should match dto attribute -->
+                                <label class="form-label" for="name">Task Name</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="name"
+                                       name="name"
+                                       th:value="*{name}"/>
+                                <!--th:field="*{name}"
+                                th:placeholder="${task.name}"-->
+
+
+
+                            </div>
+                            <div class="form-group">
+
+                                <button class="btn btn-primary" type="submit">Save</button>
+                            </div>
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

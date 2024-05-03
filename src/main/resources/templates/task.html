@@ -37,6 +37,12 @@
                 <div th:if="${success}">
                     <div class="alert alert-info">
                         You have successfully entered your task!
+
+
+
+                        <p th:text="${task.name}">Welcome to our grocery store!</p>
+
+
                         <form
 
                                 method="post"
@@ -174,6 +180,7 @@
                             <tbody>
                                 <tr th:each = "task : ${allTasks}" draggable="true" class="task-row">
                                     <td th:text = "${task.name}"></td>
+                                    <td th:text = "${task.id}"></td>
     <!--                                <td th:text = "${task.description}"></td>-->
     <!--                                <td th:text = "${task.priority}"></td>-->
     <!--                                <td th:text = "${task.deadline}"></td>-->
@@ -186,14 +193,19 @@
     <!--                                <td th:text = "${task.deleted}"></td>-->
     <!--                                -->
                                     <td>
+
                                        <form
 
                                             method="post"
                                             role="form"
-                                            th:action="@{/task/edit}"
+                                            th:action="@{/task/route}"
                                             th:object="${task}"
                                         >
+
+                                           <input type ="hidden"  th:field="*{id}">
+                                           <input type ="hidden"  th:field="*{name}">
                                             <div class="form-group">
+
                                                 <button class="btn btn-primary" type="submit">Edit</button>
                                             </div>
                                         </form>
@@ -206,7 +218,7 @@
                                                 th:action="@{/task/delete}"
                                                 th:object="${task}"
                                         >
-                                            <div class="form-group">
+                                            <div class="form-group" >
                                                 <button class="btn btn-primary" type="submit">Delete</button>
                                             </div>
                                         </form>

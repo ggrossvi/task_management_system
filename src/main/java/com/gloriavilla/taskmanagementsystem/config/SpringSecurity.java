@@ -29,6 +29,8 @@ public class SpringSecurity {
                                 .requestMatchers("/task/save").permitAll()
                                 .requestMatchers("/task/list").permitAll()
                                 .requestMatchers("/task/edit").permitAll()
+                                .requestMatchers("/task/route").permitAll()
+
                                 .requestMatchers("/users").hasRole("ADMIN")
 
                         //.requestMatchers(“/users”).permitAll()

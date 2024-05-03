@@ -8,6 +8,7 @@ public class TaskDto {
 
     // should id have a @ID? because it is primary
     // why does UserDto have @Email annotation
+    @NotEmpty
     private Long id;
 
     @NotEmpty

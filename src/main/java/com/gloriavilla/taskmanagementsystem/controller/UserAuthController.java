@@ -146,8 +146,18 @@ public class UserAuthController {
         //model.addAttribute("allTasks", allTasks);
         model.addAttribute("success", "success");
         //return "redirect:/tasks?success";
-        return "/task";
+        //return "/task";
         //command shift /
+        return "redirect:/taskEdit?success";
     }
+
+
+    @PostMapping("/task/route")
+    public String processRouting(@ModelAttribute("task") TaskDto taskDto, BindingResult result,
+                           Model model) {
+        model.addAttribute("task", taskDto);
+        return "/taskEdit";
+    }
+
 
 }
