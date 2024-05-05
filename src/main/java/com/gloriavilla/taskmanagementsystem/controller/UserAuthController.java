@@ -11,11 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PutMapping;
 
 @Controller
 public class UserAuthController {
@@ -138,7 +135,11 @@ public class UserAuthController {
         //taskService.editTask(taskDto);
 
         //fetch the task from db
+        Task updatedTask= new Task();
+        updatedTask.setName(taskDto.getName());
+        updatedTask.setId(taskDto.getId());
         Task currentTask = taskService.findTaskById(1L);
+        taskService.updateTask(currentTask, updatedTask);
 
         //update this task with the new values
         //taskService.updateTask(currentTask, taskDto);
@@ -158,6 +159,16 @@ public class UserAuthController {
         model.addAttribute("task", taskDto);
         return "/taskEdit";
     }
+
+    @DeleteMapping("/task/{id}")
+    public String deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+        //model.addAttribute("success", "success");
+        //return "redirect:/task/list";
+        return "Deleted task with id: " + id + " successfully!";
+    }
+
+
 
 
 }

@@ -202,8 +202,8 @@
                                             th:object="${task}"
                                         >
 
-                                           <input type ="hidden"  th:field="*{id}">
-                                           <input type ="hidden"  th:field="*{name}">
+                                           <input type ="hidden"  th:field="${task.id}">
+                                           <input type ="hidden"  th:field="${task.name}">
                                             <div class="form-group">
 
                                                 <button class="btn btn-primary" type="submit">Edit</button>
@@ -215,7 +215,7 @@
 
                                                 method="post"
                                                 role="form"
-                                                th:action="@{/task/delete}"
+                                                th:action="@{/task/*{task.id}}"
                                                 th:object="${task}"
                                         >
                                             <div class="form-group" >

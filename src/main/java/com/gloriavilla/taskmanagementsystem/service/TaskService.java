@@ -12,4 +12,5 @@ public interface TaskService {
     List<Task> findAllByUserId(Long userId);
     Task findTaskById(Long id);
     void updateTask(Task currentTask, Task dto);
+    void deleteTask(Long id);
 }

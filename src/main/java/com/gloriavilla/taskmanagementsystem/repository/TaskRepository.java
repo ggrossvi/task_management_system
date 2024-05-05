@@ -10,6 +10,8 @@ public interface TaskRepository  extends JpaRepository <Task, Long>{
 
     // using JPA query naming convention
     List<Task> findAllByUserId(Long userId);
+
+    void deleteById(Long id);
 }
 
 

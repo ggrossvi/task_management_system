@@ -70,11 +70,11 @@
 
                                 method="post"
                                 role="form"
-                                th:action="@{/task/save}"
+                                th:action="@{/task/edit}"
                                 th:object="${task}"
                         >
 
-                            <input type ="hidden"  th:field="*{id}">
+                            <input type = "text" th:field="*{id}">
                             <input type ="hidden"  th:field="*{name}">
                             <div class="form-group mb-3"
                                  th:if="${task.name != null}"
