@@ -36,8 +36,20 @@
                     </div>
                     <div th:if="${success}">
                         <div class="alert alert-info">
-                            Update your Task
+                            Updated your Task
                             <p th:text="${task.name}"></p>
+                            <form
+
+                                    method="post"
+                                    role="form"
+                                    th:action="@{/task/save}"
+                                    th:object="${task}"
+                            >
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">Show All Tasks</button>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                     <div th:if="${edit}">
@@ -75,7 +87,6 @@
                         >
 
                             <input type = "text" th:field="*{id}">
-                            <input type ="hidden"  th:field="*{name}">
                             <div class="form-group mb-3"
                                  th:if="${task.name != null}"
                             >
@@ -86,7 +97,7 @@
                                        class="form-control"
                                        id="name"
                                        name="name"
-                                       th:value="*{name}"/>
+                                       th:value="${task.name}"/>
                                 <!--th:field="*{name}"
                                 th:placeholder="${task.name}"-->
 

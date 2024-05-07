@@ -9,7 +9,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
-@EnableWebSecurity
+
+// @EnableWebSecurity applies security.  Right now it is disabled for testing is a marker annotation. It allows Spring to find and automatically apply the class to the global WebSecurity.
+//@EnableWebSecurity
 public class SpringSecurity {
 
     @Bean

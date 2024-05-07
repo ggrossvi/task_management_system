@@ -73,9 +73,17 @@ public class UserAuthController {
     @PostMapping("/task/save")
     public String saveTask(@ModelAttribute("task") TaskDto taskDto,  UserDto userDto,BindingResult result,
                            Model model){
-        if (result.hasErrors()) {
+        if (result.hasErrors() ) {
             model.addAttribute("task", taskDto);
 
+            return "task";
+        }
+        if (taskDto.getName() == null || taskDto.getName().isEmpty()  ){
+
+            List<Task> allTasks = taskService.findAllByUserId(1L);
+
+            model.addAttribute("allTasks", allTasks);
+            model.addAttribute("success","success");
             return "task";
         }
         taskService.saveTask(taskDto);
@@ -149,7 +157,7 @@ public class UserAuthController {
         //return "redirect:/tasks?success";
         //return "/task";
         //command shift /
-        return "redirect:/taskEdit?success";
+        return "/taskEdit";
     }
 
 
