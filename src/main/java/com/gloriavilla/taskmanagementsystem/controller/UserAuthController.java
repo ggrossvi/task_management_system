@@ -146,7 +146,7 @@ public class UserAuthController {
         Task updatedTask= new Task();
         updatedTask.setName(taskDto.getName());
         updatedTask.setId(taskDto.getId());
-        Task currentTask = taskService.findTaskById(1L);
+        Task currentTask = taskService.findTaskById(taskDto.getId());
         taskService.updateTask(currentTask, updatedTask);
 
         //update this task with the new values
@@ -168,8 +168,9 @@ public class UserAuthController {
         return "/taskEdit";
     }
 
-    @DeleteMapping("/task/{id}")
-    public String deleteTask(@PathVariable Long id) {
+    @PostMapping("/task/delete")
+    public String deleteTask( @ModelAttribute("task") TaskDto taskDto, BindingResult result,
+                              Model model, @PathVariable Long id) {
         taskService.deleteTask(id);
         //model.addAttribute("success", "success");
         //return "redirect:/task/list";

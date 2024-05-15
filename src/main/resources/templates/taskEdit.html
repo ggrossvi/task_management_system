@@ -86,10 +86,12 @@
                                 th:object="${task}"
                         >
 
-                            <input type = "text" th:field="*{id}">
+
                             <div class="form-group mb-3"
                                  th:if="${task.name != null}"
                             >
+
+
 
                                 <!-- The names of the input field should match dto attribute -->
                                 <label class="form-label" for="name">Task Name</label>
@@ -101,6 +103,23 @@
                                 <!--th:field="*{name}"
                                 th:placeholder="${task.name}"-->
 
+
+
+                            </div>
+                            <div class="form-group mb-3"
+                                 th:if="${task.id != null}"
+                            >
+
+
+
+
+                                <label class="form-label" for="id">Task Id</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="id"
+                                       name="id"
+                                       readonly="readonly"
+                                       th:value="${task.id}"/>
 
 
                             </div>

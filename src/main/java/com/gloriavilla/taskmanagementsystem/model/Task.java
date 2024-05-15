@@ -17,10 +17,21 @@ import java.util.*;
 public class Task {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    //@GeneratedValue(strategy= GenerationType.SEQUENCE)
+
     Long id;
     @Column(nullable=false)
     String name;
     String description;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name = "date")
     Date date;

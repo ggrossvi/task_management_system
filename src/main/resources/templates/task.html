@@ -202,8 +202,9 @@
                                             th:object="${task}"
                                         >
 
-                                           <input type ="hidden"  th:field="${task.id}">
+
                                            <input type ="hidden"  th:field="${task.name}">
+                                           <input type="hidden" th:value="${task.id}" name="id" />
                                             <div class="form-group">
 
                                                 <button class="btn btn-primary" type="submit">Edit</button>
@@ -215,9 +216,11 @@
 
                                                 method="post"
                                                 role="form"
-                                                th:action="@{/task/*{task.id}}"
+                                                th:action="@{/task/delete}"
                                                 th:object="${task}"
+
                                         >
+                                            <input type="hidden" th:value="${task.id}" name="id" />
                                             <div class="form-group" >
                                                 <button class="btn btn-primary" type="submit">Delete</button>
                                             </div>
