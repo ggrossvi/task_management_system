@@ -170,11 +170,15 @@ public class UserAuthController {
 
     @PostMapping("/task/delete")
     public String deleteTask( @ModelAttribute("task") TaskDto taskDto, BindingResult result,
-                              Model model, @PathVariable Long id) {
-        taskService.deleteTask(id);
-        //model.addAttribute("success", "success");
+                              Model model) {
+        taskService.deleteTask(taskDto.getId());
+
+        List<Task> allTasks = taskService.findAllByUserId(1L);
+        model.addAttribute("allTasks", allTasks);
+        model.addAttribute("success", "success");
+        model.addAttribute("delete", "delete");
         //return "redirect:/task/list";
-        return "Deleted task with id: " + id + " successfully!";
+        return "/task";
     }
 
 

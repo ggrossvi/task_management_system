@@ -34,7 +34,28 @@
                 <div class="card-header">
                     <h2 class="text-center">Task Form</h2>
                 </div>
-                <div th:if="${success}">
+
+
+
+
+
+
+
+
+
+                <div th:if="${success} ">
+
+
+                    <div th:if="${delete}">
+                        <div class="alert alert-info">
+                            You have successfully deleted your task!
+
+                            <p th:text="${task.name}">Welcome to our grocery store!</p>
+
+                        </div>
+                    </div>
+
+                    <div th:if="${delete==null}">
                     <div class="alert alert-info">
                         You have successfully entered your task!
 
@@ -55,6 +76,7 @@
                                 <button class="btn btn-primary" type="submit">Show Tasks</button>
                             </div>
                         </form>
+                    </div>
                     </div>
 
                 </div>
@@ -203,7 +225,8 @@
                                         >
 
 
-                                           <input type ="hidden"  th:field="${task.name}">
+
+                                           <input type="hidden" th:value="${task.name}" name="name" />
                                            <input type="hidden" th:value="${task.id}" name="id" />
                                             <div class="form-group">
 
