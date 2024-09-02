@@ -18,6 +18,7 @@ public class TaskDto {
 
     Long userId; //name of column in user model
 
+    Boolean isCompleted;
     public Long getId() {
         return id;
     }
@@ -57,4 +58,9 @@ public class TaskDto {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
+
+    public Boolean getIsCompleted() {
+        return isCompleted;
+    }
+
 }

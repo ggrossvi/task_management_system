@@ -23,6 +23,7 @@ public class Task {
     @Column(nullable=false)
     String name;
     String description;
+    Boolean isCompleted;
 
     public Long getId() {
         return id;
@@ -39,6 +40,14 @@ public class Task {
 //   @JoinColumn(name="user_id", nullable=false)  // @JoinColumn indicates the mapping on the owning side
        //User user;
     Long userId; //name of column in user model
+
+    public Boolean getCompleted() {
+        return isCompleted;
+    }
+
+    public void setCompleted(Boolean completed) {
+        isCompleted = completed;
+    }
 
 
 

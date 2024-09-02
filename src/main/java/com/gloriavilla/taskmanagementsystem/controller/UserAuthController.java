@@ -8,6 +8,9 @@ import com.gloriavilla.taskmanagementsystem.model.User;
 import com.gloriavilla.taskmanagementsystem.service.TaskService;
 import com.gloriavilla.taskmanagementsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -107,7 +110,13 @@ public class UserAuthController {
     // handler method is used to handle a list of students
     @GetMapping("/users")
     public String users(Model model) {
-        List<UserDto> users = userService.findAllUsers();
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
+        User users = userService.findUserByEmail(username);
         model.addAttribute("users", users);
         return "task";
 
@@ -146,6 +155,8 @@ public class UserAuthController {
         Task updatedTask= new Task();
         updatedTask.setName(taskDto.getName());
         updatedTask.setId(taskDto.getId());
+        updatedTask.setIsCompleted(taskDto.getIsCompleted());
+        updatedTask.setDescription(taskDto.getDescription());
         Task currentTask = taskService.findTaskById(taskDto.getId());
         taskService.updateTask(currentTask, updatedTask);
 
